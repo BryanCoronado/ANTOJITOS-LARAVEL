@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> categorias</title>
+    <link rel="stylesheet" href="admin/assets/css/formularios.css">
+
     <!-- plugins:css -->
     @include('admin.css')
 
@@ -55,10 +57,10 @@
       <!-- barra lateral -->
       @include('admin.barraLateral')
 
- 
+      @include('admin.navbar')
       <div class="container-fluid page-body-wrapper">
         <!-- navbar -->
-     @include('admin.navbar')
+
 
      <div class="main-panel">
           <div class="content-wrapper">
@@ -79,8 +81,11 @@
 
                 @csrf 
 
+                <label>
+         
 
-                <input type="text" class="input_color" name="category" placeholder="Escribe la categoría" required>
+
+                <input class="input" type="text" class="input_color" name="category" placeholder="Escribe la categoría" required>
                 <input type="submit" class="btn btn-primary" name="submit" value="agregar">
                 </form>
 
@@ -91,9 +96,6 @@
                 <td>CATEGORIA NOMBRE</td>
                 <td>ACCION</td>
               </tr>
-
-              
-
 
               @foreach($data as $data)
               <tr>

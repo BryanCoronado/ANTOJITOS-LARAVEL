@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="admin/assets/vendors/css/vendor.bundle.base.css">
-    <!-- endinject -->admin/
+    <!-- endinject -->
 
     <link rel="stylesheet" href="admin/assets/vendors/jvectormap/jquery-jvectormap.css">
     <link rel="stylesheet" href="admin/assets/vendors/flag-icon-css/css/flag-icon.min.css">

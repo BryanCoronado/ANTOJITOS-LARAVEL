@@ -1,4 +1,5 @@
-/*-------------------------------------------------------------------
+/*------------------------------------------------------------------
+-
   ===== Table of Contents =====
 
   * Bootstrap functions
@@ -117,6 +118,9 @@
     opacity: 0; }
   100% {
     opacity: 1; } }
+    .table {
+      display: table-column !important;
+  }
 
 @-webkit-keyframes flash {
   0% {
@@ -21126,7 +21130,7 @@ div.tagsinput {
       width: 100%; } }
 
 .content-wrapper {
-  background: #000000;
+  background: #FFD099;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;
