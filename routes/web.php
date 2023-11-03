@@ -30,12 +30,12 @@ Route::middleware([
 
 route::get('/redirect', [HomeController::class, 'redirect']);
 
-route::get('/view_category', [AdminController::class, 'view_category']);
+route::get('/view_catagory', [AdminController::class, 'view_catagory']);
 
 
-route::post('/add_category', [AdminController::class, 'add_category']);
+route::post('/add_catagory', [AdminController::class, 'add_catagory']);
 
-route::get('/delete_category/{id}', [AdminController::class, 'delete_category']);
+route::get('/delete_catagory/{id}', [AdminController::class, 'delete_catagory']);
 
 route::get('/view_product', [AdminController::class, 'view_product']);
 

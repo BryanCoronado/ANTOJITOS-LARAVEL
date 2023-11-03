@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> categorias</title>
-    <link rel="stylesheet" href="admin/assets/css/formularios.css">
 
     <!-- plugins:css -->
     @include('admin.css')
@@ -21,7 +20,7 @@
             padding-bottom:40px;
         }
         .input_color{
-          color: #000;
+          color: #000 !important;
         }
         .center{
           margin:auto;
@@ -77,7 +76,7 @@
             <div class="div_center">
                 <h2 class="font2">agregar categorias</h2>
 
-                <form action="{{url('/add_category')}}" method="POST" >
+                <form action="{{url('/add_catagory')}}" method="POST" >
 
                 @csrf 
 
@@ -85,7 +84,7 @@
          
 
 
-                <input class="input" type="text" class="input_color" name="category" placeholder="Escribe la categoría" required>
+                <input class="input" type="text" class="input_color" name="catagory" placeholder="Escribe la categoría" required>
                 <input type="submit" class="btn btn-primary" name="submit" value="agregar">
                 </form>
 
@@ -99,11 +98,11 @@
 
               @foreach($data as $data)
               <tr>
-                <td class="categoria">{{$data->category_name}}</td>
+                <td class="categoria">{{$data->catagory_name}}</td>
 
 
                 <td>
-                  <a onclick="return confirm('Seguro que quieres eliminar la acaregoria')" href="{{url('delete_category',$data->id)}}" class="btn btn-danger">eliminar</a>
+                  <a onclick="return confirm('Seguro que quieres eliminar la acaregoria')" href="{{url('delete_catagory',$data->id)}}" class="btn btn-danger">eliminar</a>
                 </td>
               </tr>
               @endforeach

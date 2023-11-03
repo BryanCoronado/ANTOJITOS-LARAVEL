@@ -50,7 +50,7 @@
                               <td> {{$product->description}}</td>
                               <td> {{$product->quantity}} </td>
                               <td>
-                                  {{$product->category_name}}
+                                  {{$product->catagory}}
                               </td>
                               <td> <strong> S/. {{$product->price}}  </strong></td>
                               <td> {{$product->discount_price}}  </td>
