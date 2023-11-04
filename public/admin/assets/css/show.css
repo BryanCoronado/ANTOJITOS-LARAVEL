@@ -36,19 +36,10 @@
     font-size: 14px;
   }
 
-  .sms{
-    margin-top: 100px;
-    margin-left: 40px;
-  }
 
-main.table {
-    height: 90vh;
-    overflow: hidden;
-}
 
 .table__header {
     width: 100%;
-    height: 10%;
     padding: .8rem 1rem;
     display: flex;
     justify-content: space-between;
@@ -321,6 +312,10 @@ thead th.active,tbody td.active {
     width: 2rem;
     height: auto;
 }
+.sms{
+    margin-top: 20px;
+    margin-left: 50px;
+}
 
 
 /* Media query para pantallas más pequeñas (menos de 600px) */
@@ -343,3 +338,107 @@ thead th.active,tbody td.active {
       font-size: 12px;
     }
   }
+
+
+
+  @media (max-width: 470px) {
+    .title{
+        font-size: 30px;
+    }
+    .sms{
+        margin-left: 30px   ;
+    }
+  }
+
+
+
+
+
+
+  .eliminar {
+    background-color: #af2727;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color,border-color,color,fill,stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: auto;
+   }
+   
+   .eliminar:hover {
+    background-color: #374151;
+    color: #fff;
+    text-decoration: none;
+   }
+   
+   .eliminar:focus {
+    box-shadow: none;
+    outline: 2px solid white;
+    outline-offset: 2px;
+   }
+   
+   @media (min-width: 768px) {
+    .eliminar {
+     padding: .75rem 1.5rem;
+    }
+   }
+
+
+
+  .editar {
+    background-color: #0d591f;
+    border: 1px solid transparent;
+    border-radius: .75rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    padding: .75rem 1.2rem;
+    text-align: center;
+    text-decoration: none #6B7280 solid;
+    text-decoration-thickness: auto;
+    transition-duration: .2s;
+    transition-property: background-color,border-color,color,fill,stroke;
+    transition-timing-function: cubic-bezier(.4, 0, 0.2, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 110px;
+   }
+   
+   .editar:hover {
+    background-color: #374151;
+    color: #fff;
+    text-decoration: none;
+   }
+   
+   .editar:focus {
+    box-shadow: none;
+    outline: 2px solid white;
+    outline-offset: 2px;
+   }
+   
+   @media (min-width: 768px) {
+    .editar {
+     padding: .75rem 1.5rem;
+    }
+   }

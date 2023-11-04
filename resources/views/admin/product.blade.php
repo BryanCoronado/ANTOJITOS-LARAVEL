@@ -30,55 +30,70 @@
        
         <div class="container-fluid page-body-wrapper">
                
-                <div class="div_center">
                 @if(session()->has('message'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                     {{session()->get('message')}}
                 </div>
                 @endif
-                    <h1 class="font_size">Agregar Productos</h1>
-                    <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                <div class="form-container">
+                    <form class="form" action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="div-design">
-                            <label>Nombre del Producto: </label>
-                            <input class="text_color" type="text" name="title" placeholder="Escriba un titulo">
-                        </div>
-                        <div class="div-design">
-                            <label>Descripción del Producto: </label>
-                            <input class="text_color" type="text" name="description" placeholder="Escriba una descripción">
-                        </div>
-                        <div class="div-design">
-                            <label>Precio del Producto: </label>
-                            <input class="text_color" type="number" name="price" placeholder="Escriba un precio">
-                        </div>
-                        <div class="div-design">
-                            <label>Descuento del Producto: </label>
-                            <input class="text_color" type="number" name="dis_price" placeholder="Escriba un titulo">
-                        </div>
-                        <div class="div-design">
-                            <label>Cantidad del Producto: </label>
-                            <input class="text_color" type="number" min="0" name="quantity" placeholder="Escriba una cantidad">
-                        </div>
-                        <div class="div-design">
-                            <label>Categoría del Producto: </label>
-                            <select class="text_color" name="catagory">
-                                <option value="" selected="">Seleccionar categoría aquí</option>
-                                @foreach($catagory as $catagory)
-                                <option value="{{$catagory->catagory_name}}">{{$catagory->catagory_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="div-design">
-                            <label>Imagen del Producto: </label>
-                            <input type="file" name="image">
-                        </div>
-                        <div class="div-design">
-                            <input type="submit" value="Agregar Producto" class="btn btn-success">
-                        </div>
+                        <p class="title">AGREGAR PRODUCTOS </p>
+                        <p class="message">completa todos los espacios </p>
+                              
+                                
+                        <label>
+                            <input class="input" type="text"  name="title" placeholder="" required="">
+                            <span>tiutlo</span>
+                        </label> 
+                            
+                        <label>
+                            <input class="input" type="text"  name="description" placeholder="" required="">
+                            <span>Descripcion</span>
+                        </label>
+                        <label>
+                            <input class="input" type="number"  name="price" placeholder="" required="">
+                            <span>precio</span>
+                        </label>
+                        <div class="flex">
+                              <label>
+                                  <input class="input" type="number"  name="dis_price" placeholder="" required="">
+                                  <span>descuento</span>
+                              </label>
+
+                              <label>
+                                  <input class="input" type="number"  name="quantity" placeholder="" required="">
+                                  <span>cantidad</span>
+                              </label>
+                             </div>
+                      
+                             <label>
+                                <select class="input" required name="catagory">
+                                  <option value="" selected disabled>Selecciona una categoría</option>
+                                  @foreach($catagory as $catagory)
+                                  <option value="{{$catagory->catagory_name}}">{{$catagory->catagory_name}}</option>
+                                  @endforeach
+                                </select>
+                                <span>Categoría</span>
+                              </label>
+
+
+                              <div class="input">
+                                  <label class="input">Imagen del Producto: </label>
+                                  <input type="file" name="image">
+                              </div>
+                         
+                        
+                        <button type="submit" class="submit">agregar</button>
                     </form>
+                    <div class="image-container">
+                    <img src="admin/assets/images/chef-png.png" alt="logo" />                    
+                    </div>
+
+
+                    
                 </div>
-           
         </div>
         @include('admin.script')
 </body>
