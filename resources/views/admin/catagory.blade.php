@@ -84,7 +84,7 @@
          
 
 
-                <input class="input" type="text" class="input_color" name="catagory" placeholder="Escribe la categoría" required>
+                <input style='color:black;' class="input" type="text" class="input_color" name="catagory" placeholder="Escribe la categoría" required>
                 <input type="submit" class="btn btn-primary" name="submit" value="agregar">
                 </form>
 
