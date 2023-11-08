@@ -1,3 +1,28 @@
+<style>
+    .alert-floating {
+    width: 100%;
+    top: 90px;
+    z-index: 1000;
+    background-color: #ffc107; /* Color de fondo */
+    color: #333; /* Color del texto */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: fadeOut 5s ease; /* Animación para desvanecerse */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+</style>
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
@@ -11,6 +36,14 @@
                 {{ session('status') }}
             </div>
         @endif
+
+        @if (session('message'))
+    <div class="alert alert-floating">
+        {{ session('message') }}
+    </div>
+@endif
+
+
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -46,3 +79,13 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+<script>
+
+    setTimeout(function() {
+        var alert = document.querySelector('.alert-floating');
+        if (alert) {
+            alert.style.display = 'none';
+        }
+    }, 5000); // Cambia el valor '5000' a la duración deseada en milisegundos
+</script>
+

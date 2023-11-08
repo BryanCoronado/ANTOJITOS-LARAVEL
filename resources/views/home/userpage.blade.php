@@ -31,6 +31,8 @@
         <div id="js-scroll-content">
 
 
+
+
                 <!-- slider section -->
               @include('home.presentacion')
                 <!-- end slider section -->

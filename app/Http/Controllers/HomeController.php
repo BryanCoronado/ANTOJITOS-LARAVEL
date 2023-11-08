@@ -78,8 +78,26 @@ class HomeController extends Controller
 
     public function show_cart()
     {
-        $user=Auth::user();
-        $cart = cart::where('user_id',$user->id)->get();
-        return view('home.showcart');
+        if (Auth::id()) {
+            $id = Auth::user()->id;
+            $cart = Cart::where('user_id', '=', $id)->get();
+            return view('home.showcart', compact('cart'));
+        } else {
+            session()->flash('message', 'Debes iniciar sesión para ver tu carrito.');
+            return redirect('login');
+        }
     }
+
+    public function remove_cart($id)
+    {
+        $cart = Cart::find($id);
+        $cart->delete();
+        session()->flash('message', 'ELIMINASTE UN PRODUCTO DE TU CARRITO');
+        return redirect()->back();
+    }
+
+    
+
+
+
 }
