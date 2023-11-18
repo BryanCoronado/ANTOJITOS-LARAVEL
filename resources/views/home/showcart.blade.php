@@ -24,7 +24,29 @@
 
 <body class="body-fixed">
 <style>
+    .alert-floating {
+    border: 2px solid white;
+    width: 60%;
+    margin: auto;
+    top: 110px;
+    z-index: 1000;
+    background-color: #ffc107; /* Color de fondo */
+    color: #333; /* Color del texto */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: fadeOut 5s ease; /* Animación para desvanecerse */
+}
 
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
 
 </style>
 
@@ -35,10 +57,10 @@
 <div id="viewport">
     <div id="js-scroll-content">
     @if (session('message'))
-    <div class="alert alert-floating">
-        {{ session('message') }}
-    </div>
-@endif
+        <div class="alert alert-floating">
+            {{ session('message') }}
+        </div>
+    @endif
 
 
         <div class="card">
@@ -81,18 +103,21 @@
                         <div class="col" style="padding-left:0;">ITEMS 3</div>
                         <div class="col text-right">&euro; 132.00</div>
                     </div>
-                    <!-- <form>
-                        <p>SHIPPING</p>
-                        <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
-                        <p>GIVE CODE</p>
-                        <input id="code" placeholder="Enter your code">
-                    </form> -->
+                    
                     
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">TOTAL PRICE</div>
                         <div class="col text-right">S/. {{ $totalprice}}</div>
                     </div>
-                    <button class="btn">CHECKOUT</button>
+                
+                        <p>Metodo</p>
+                        <div>
+                            <a href="{{url('cash_order')}}" class="btn btn-primary" id="pagoContraEntrega">CASH ON DELIVERY</a>
+                            <a class="btn btn-primary" href="{{url('stripe',$totalprice)}}" id="pagoConTarjeta">PAGO CON TARJETA</a>
+                        </div>
+
+
+ 
                 </div>
             </div>
             
