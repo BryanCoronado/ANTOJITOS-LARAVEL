@@ -487,3 +487,42 @@ thead th.active,tbody td.active {
      padding: .75rem 1.5rem;
     }
    }
+
+
+
+/* Estilos para el mensaje de "no hay datos" */
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    color: #f61a30; /* Texto rojo oscuro */
+    border-radius: 5px;
+    margin-top: 20px;
+    
+}
+
+.empty-message p {
+    margin: 0;
+    font-size: 16px;
+}
+.no_hay{
+    font-size: 30px !important;
+    color: #f61a30 !important;
+    
+}
+/* Opcional: estilos adicionales para centrar el mensaje verticalmente */
+.empty-message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+   

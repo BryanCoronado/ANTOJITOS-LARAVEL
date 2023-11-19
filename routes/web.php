@@ -67,6 +67,11 @@ route::get('/order', [AdminController::class, 'order']);
 
 route::get('/delivered/{id}', [AdminController::class, 'delivered']);
 
+route::get('/print_pdf/{id}', [AdminController::class, 'print_pdf']);
+
+route::get('/search', [AdminController::class, 'searchdata']);
+
+route::post('/add_comment', [HomeController::class, 'add_comment']);
 
 
 

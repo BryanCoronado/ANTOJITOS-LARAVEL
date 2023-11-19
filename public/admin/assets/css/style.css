@@ -16575,7 +16575,30 @@ code {
 
 /* Cards */
 .card {
-  border-radius: 0.25rem; }
+    border: solid;
+    border-radius: 20px;
+    background-color: #ebc39b; 
+}
+.numeros{
+    justify-content: center;
+    font-size: 60px;
+    margin-top: -30px;
+    margin-left: 70px;
+    font-weight: bold;
+    font-family: cursive;
+    color: #363333;
+
+}
+.numero{
+    justify-content: center;
+    font-size: 60px;
+    margin-top: -30px;
+    margin-left: -10px;
+    font-weight: bold;
+    font-family: cursive;
+    color: #363333;
+
+}
   .card .card-body {
     padding: 1.75rem 1.5625rem; }
     .card .card-body + .card-body {
@@ -21130,7 +21153,6 @@ div.tagsinput {
       width: 100%; } }
 
 .content-wrapper {
-  background: #FFD099;
   padding: 1.875rem 1.75rem;
   width: 100%;
   -webkit-flex-grow: 1;

@@ -27,6 +27,8 @@
               <div class="sms">
                     <p class="title">Tus productos creados</p>
                     <p class="message"></p>
+                    
+                    
                 </div>
                 <section class="table__header">
                 

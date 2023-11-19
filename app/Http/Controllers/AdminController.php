@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Catagory;
 use App\Models\Product;
 use App\Models\Order;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -125,6 +126,21 @@ class AdminController extends Controller
         $order->payment_status='PAGADO';
         $order->save();
         return redirect()->back()->with('message', 'Orden entregada exitosamente');
+    }
+
+    public function print_pdf($id)
+    {
+        $order=order::find($id);
+        $pdf = PDF::loadView('admin.pdf', compact('order'));
+        return $pdf->download('order_details.pdf');
+    }
+
+    public function searchdata(Request $request)
+    {
+        $searchText=$request->search;
+        $order=order::where('name', 'LIKE', "%$searchText%")->orWhere('email', 'LIKE', "%$searchText%")->orWhere('phone', 'LIKE', "%$searchText%")->orWhere('address', 'LIKE', "%$searchText%")->orWhere('product_title', 'LIKE', "%$searchText%")->orWhere('quantity', 'LIKE', "%$searchText%")->orWhere('price', 'LIKE', "%$searchText%")->orWhere('payment_status', 'LIKE', "%$searchText%")->orWhere('delivery_status', 'LIKE', "%$searchText%")->get();
+
+        return view('admin.order', compact('order'));
     }
 
    

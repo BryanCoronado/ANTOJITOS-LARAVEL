@@ -29,8 +29,11 @@
                     <p class="message"></p>
                 </div>
                 <section class="table__header">
-                
-                 
+                    <form action="{{url('search')}}" method="GET">
+                        <input type="text" name="search" placeholder="Buscar por nombre">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </form>
+
                 </section>
               <section class="table__body">
                 
@@ -48,10 +51,11 @@
                               <th> Estado delivery <span class="icon-arrow">&UpArrow;</span></th>
                               <th> imagen <span class="icon-arrow">&UpArrow;</span></th>
                               <th> ACTUALIZAR <span class="icon-arrow">&UpArrow;</span></th>
+                              <th> IMPRIMIR <span class="icon-arrow">&UpArrow;</span></th>
                           </tr>
                       </thead>
                       <tbody>
-                        @foreach($order as $order)
+                        @forelse($order as $order)
                           <tr>
                               <td>{{$order->name}}</td>
                               <td>{{$order->email}}</td>
@@ -71,9 +75,22 @@
 
                               @endif
                             </td>
+                            <td>
+                                <a href="{{url('print_pdf' , $order->id)}}" class="editar">IMPRIMIR</a>                                
+                            </td>
+
 
                           </tr>
-                        @endforeach
+
+                          @empty
+                              <div class="empty-message-container">
+                                  <div class="empty-message">
+                                      <p class="no_hay">No hay datos</p>
+                                  </div>
+                              </div>
+                        
+                        
+                        @endforelse
                         
                         
                       </tbody>

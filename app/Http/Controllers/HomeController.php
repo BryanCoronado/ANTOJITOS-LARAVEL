@@ -11,9 +11,14 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 
+use App\Models\Comment;
+
 use App\Models\Order;
+
+
 use Session;
 use Stripe;
+
 
 
 class HomeController extends Controller
@@ -29,11 +34,27 @@ class HomeController extends Controller
     {
         $usertype =Auth::user()->usertype;
         if ($usertype=='1'){
-            return view('admin.home');
+            $total_product=product::all()->count();
+            $total_order=order::all()->count();
+            $total_user=user::all()->count();
+            $order=order::all();
+            $total_revenue=0;
+
+            foreach($order as $order)
+            {
+                $total_revenue=$total_revenue + $order->price;
+            }
+
+            $total_delivered=order::where('delivery_status','ENTREGADO')->get()->count();
+            $total_processing=order::where('delivery_status','PROSESANDO')->get()->count();
+
+
+            return view('admin.home',compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
         }
         else{
-            $product = product::paginate(10);
-            return view('home.userpage', compact('product'));
+            $product = Product::paginate(10);
+            $comment=comment::all();
+            return view('home.userpage', compact('product','comment'));
           
         }
     }
@@ -194,13 +215,82 @@ class HomeController extends Controller
         return back();
     }
 
+    public function add_comment(Request $request)
+    {
+        if(Auth::id())
+        {
+            
+            $comment = new comment;
+            $comment->name = Auth::user()->name;
+            $comment->user_id = Auth::user()->id;
+            $comment->comment = $request->comment;
+            $comment->save();
+            return redirect()->back();
+        }
+        else
+        {
+            session()->flash('message', 'Debes iniciar sesión para poder comentar');
+            return redirect('login');
+        }
+
+    }
+
+    public function add_reply(Request $request)
+    {
+        if (Auth::id()) {
+            $reply = new reply;
+            $reply->name = Auth::user()->name;
+            $reply->user_id = Auth::user()->id;
+            $reply->comment_id = $request->commentId;
+            $reply->reply = $request->reply;
+            $reply->save();
+            return redirect()->back();
+        } else {
+            return redirect('login');
+        }
+    }
 
 
-    
 
 
-    
 
 
+
+
+
+
+    // public function product_search(Request $request)
+    // {
+    //     $comment = comment::orderby('id', 'desc')->get();
+    //     $reply = reply::all();
+    //     $serach_text = $request->search;
+    //     $product = product::where('title', 'LIKE', "%$serach_text%")->orWhere('catagory', 'LIKE', "$serach_text")->paginate(10);
+    //     return view('home.userpage', compact('product', 'comment', 'reply'));
+    // }
+    // public function products()
+    // {
+    //     $product = Product::paginate(10);
+    //     $comment = comment::orderby('id', 'desc')->get();
+    //     $reply = reply::all();
+    //     return view('home.all_product', compact('product', 'comment', 'reply'));
+    // }
+    // public function search_product(Request $request)
+    // {
+    //     $comment = comment::orderby('id', 'desc')->get();
+    //     $reply = reply::all();
+    //     $serach_text = $request->search;
+    //     $product = product::where('title', 'LIKE', "%$serach_text%")->orWhere('catagory', 'LIKE', "$serach_text")->paginate(10);
+    //     return view('home.all_product', compact('product', 'comment', 'reply'));
+    // }
+    // public function blog(){
+    //     $comment = comment::orderby('id', 'desc')->get();
+    //     $reply = reply::all();
+    //     return view('home.blog',compact('comment','reply'));
+    // }
+    // public function contact(){
+    //     $comment = comment::orderby('id', 'desc')->get();
+    //     $reply = reply::all();
+    //     return view('home.contact',compact('comment','reply'));
+    // }
 
 }
