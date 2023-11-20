@@ -4,7 +4,7 @@
                 <div class="col-lg-2">
                     <div class="header-logo">
                         <a href="{{url('/')}}">
-                            <img src="../assets2/loguito.png" width="60" height="90" alt="Logo">
+                            <img src="homev2/assets2/loguito.png" width="60" height="90" alt="Logo">
                         </a>
                     </div>
                 </div>

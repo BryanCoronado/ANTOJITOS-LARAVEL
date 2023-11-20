@@ -94,7 +94,7 @@
                                             </div>
                                             <div class="testimonials-box-text">
                                                 <h3 class="h3-title">
-                                                    Maria Magdalena del Mar
+                                                    Lupe Sofia del Carmen I
                                                 </h3>
                                                 <p>Me encanta , espero volver pronto a probar esa sazon</p>
                                             </div>
@@ -103,6 +103,8 @@
                                 </div>
                             </div>
                         </div>
+                        @include('home.comments')
+
                     </div>
                 </div>
             </section>

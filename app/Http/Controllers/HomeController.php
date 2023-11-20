@@ -12,6 +12,9 @@ use App\Models\Product;
 use App\Models\Cart;
 
 use App\Models\Comment;
+use App\Models\Reply;
+
+
 
 use App\Models\Order;
 
@@ -26,7 +29,10 @@ class HomeController extends Controller
     public function index()
     {
         $product = product::paginate(10);
-        return view('home.userpage', compact('product'));
+        $comment=comment::orderby('id','desc')->get();
+        $reply=reply::all();
+      
+        return view('home.userpage', compact('product', 'comment','reply'));
       
      
     }
@@ -53,8 +59,9 @@ class HomeController extends Controller
         }
         else{
             $product = Product::paginate(10);
-            $comment=comment::all();
-            return view('home.userpage', compact('product','comment'));
+            $comment=comment::orderby('id','desc')->get();
+            $reply=reply::all();
+            return view('home.userpage', compact('product','comment','reply'));
           
         }
     }
@@ -246,18 +253,10 @@ class HomeController extends Controller
             $reply->save();
             return redirect()->back();
         } else {
+            session()->flash('message', 'Debes iniciar sesión para poder reponder comentarios');
             return redirect('login');
         }
     }
-
-
-
-
-
-
-
-
-
 
     // public function product_search(Request $request)
     // {

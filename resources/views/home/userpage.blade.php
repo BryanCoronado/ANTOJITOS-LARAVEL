@@ -43,38 +43,16 @@
             <!-- Product Section -->
             @include('home.product')
 
-            <!-- Comments Section -->
-            <div style="text-align: center;">
-                <h1 style="font-size: 24px; margin-bottom: 20px;">Comentarios</h1>
-                <form style="display: flex; flex-direction: column; align-items: center;" action="{{url('add_comment')}}" method="POST">
-                    @csrf
-                    <textarea name="comment" placeholder="Comentario" style="height: 150px; width: 600px; margin-bottom: 10px;"></textarea>
-                    <input type="submit" class="btn btn-primary" value="Comment">
-                </form>
-            </div>
-
-            <div style="padding-left: 20%;">
-                <h1 style="font-size: 20px; padding-bottom: 20px;">Todos los comentarios</h1>
-                @foreach($comment as $comment)
-                <div>
-                    <b>{{$comment->name}}</b>
-                    <p>{{$comment->name}}</p>
-                    <a href="javascript::void(0); " onclick="reply(this)">Responder</a>
-                </div>
-                @endforeach
-
-                <div style="display: none;" class="replyDiv">
-                    <textarea style="height: 100px; width: 500px;" placeholder="Respondiendo"></textarea>
-                    <br>
-                    <a class="btn btn-primary" href="">Responder</a>
-                </div>
-            </div>
+            
 
             <!-- Horarios Slider Section -->
             @include('home.horarios_slider')
+           
 
             <!-- Testimonios Section -->
             @include('home.testimonios')
+
+            
 
             <!-- Footer Section -->
             @include('home.footer')
@@ -84,9 +62,24 @@
 
     <script type="text/javascript">
         function reply(caller) {
+            document.getElementById('commentId').value = $(caller).attr('data-Commentid');
             $('.replyDiv').insertAfter($(caller).parent());
             $('.replyDiv').show();
         }
+
+        function reply_close(caller) {
+            $('.replyDiv').hide();
+        }
+    </script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function(e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
     </script>
 
     <!-- Importando Scripts JS -->
@@ -103,6 +96,7 @@
     <script src="homeV2/assets/js/ScrollToPlugin.min.js"></script>
     <script src="homeV2/assets/js/smooth-scroll.js"></script>
     <script src="homeV2/main.js"></script>
+
 </body>
 
 </html>

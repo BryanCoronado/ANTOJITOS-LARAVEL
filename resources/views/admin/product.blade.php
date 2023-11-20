@@ -21,6 +21,11 @@
       position: relative;
       animation: fadeOut 4s ease-in-out;
     }
+    iframe{
+      border-radius:20px;
+      margin-top:50px;
+      border: solid 2px blue;
+    }
   </style>
 </head>
 <body>
@@ -30,17 +35,18 @@
        
         <div class="container-fluid page-body-wrapper">
                
+
+                <div class="form-container">
                 @if(session()->has('message'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
                     {{session()->get('message')}}
                 </div>
                 @endif
-                <div class="form-container">
                     <form class="form" action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <p class="title">AGREGAR PRODUCTOS </p>
-                        <p class="message">completa todos los espacios </p>
+                        <p class="message">completa todos los espacios | se recomienda usar el ELIMINADOR DE FONDOS </p>
                               
                                 
                         <label>
@@ -84,17 +90,17 @@
                                   <input type="file" name="image">
                               </div>
                          
-                        
+
                         <button type="submit" class="submit">agregar</button>
+                        <iframe src="https://www.photoroom.com/es/herramientas/eliminador-de-fondos" width="600" height="400" frameborder="0"></iframe>
+
                     </form>
                     <div class="image-container">
                     <img src="admin/assets/images/chef-png.png" alt="logo" />                    
                     </div>
-
-
-                    
                 </div>
         </div>
+
         @include('admin.script')
 </body>
 </html>
